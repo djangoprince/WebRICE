@@ -36,6 +36,7 @@ export class Reader {
   /**
    * initializes webrice
    */
+   //check this
   public init(): void {
     if (this.getWebText() !== '') {
       this.createWebrice();
@@ -111,6 +112,7 @@ export class Reader {
     const mainPlayPauseButton = new PlayPauseButton(mainPlayIcon,
         earIconic, mainPauseIcon, text.ButtonAlt.play, 'webricePlayButton',
         text.ButtonTitle.play);
+        //append a child to node container
     this.playPauseButton =
         container.appendChild(mainPlayPauseButton.createHTML());
 
@@ -140,11 +142,12 @@ export class Reader {
     // Add the audio player to the container
     const player = new Audio();
     player.id = 'webricePlayer';
+    //add to the container, the audio as a child.
     container.appendChild(player);
 
     parent.appendChild(container);
     this.player = document.getElementById(player.id) as HTMLAudioElement;
-
+    //add listeners
     this.player.addEventListener('play', () => {
       mainPlayPauseButton.toggleIcons();
     }, false);
