@@ -1,8 +1,8 @@
 {
 
   "manifest_version": 2,
-  "name": "Labelled open",
-  "description": "Adds a context menu item that labels links with the hostname. Demo of onShown and refresh().",
+  "name": "WebRICE",
+  "description": "Adds a context menu item that labels links",
   "version": "0.6",
 
   "icons": {

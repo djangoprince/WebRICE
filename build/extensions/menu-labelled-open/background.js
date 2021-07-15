@@ -5,28 +5,28 @@ function genericOnClick(info, tab) {
   console.log("tab: " + JSON.stringify(tab));
 }
 
-// Create one test item for each context type.
-var contexts = ["page","selection","link","editable","image","video",
-                "audio"];
-for (var i = 0; i < contexts.length; i++) {
-  var context = contexts[i];
-  var title = "Test '" + context + "' menu item";
-  var id = chrome.contextMenus.create({"title": title, "contexts":[context],
-                                       "onclick": genericOnClick});
-  console.log("'" + context + "' item:" + id);
-}
+// Show WebRICE panel to the right .
+var RightF = "WebRICE panel to the right";
+var RightF = chrome.contextMenus.create({"title": RightF, "onclick": genericOnClick});
+//leftF it was title before
+// Show WebRICE panel to the left .
+var LeftF = "WebRICE panel to the left";
+var id = chrome.contextMenus.create({"title": LeftF, "onclick": genericOnClick});
 
 
 // Create a parent item and two children.
-var parent = chrome.contextMenus.create({"title": "Test parent item"});
+//add icons
+var parent = chrome.contextMenus.create({"title": "Configuration"});
 var child1 = chrome.contextMenus.create(
-  {"title": "Child 1", "parentId": parent, "onclick": genericOnClick});
+  {"title": "Play", "parentId": parent, "onclick": genericOnClick});
 var child2 = chrome.contextMenus.create(
-  {"title": "Child 2", "parentId": parent, "onclick": genericOnClick});
-console.log("parent:" + parent + " child1:" + child1 + " child2:" + child2);
+  {"title": "Stop", "parentId": parent, "onclick": genericOnClick});
+  var child3 = chrome.contextMenus.create(
+    {"title": "Change speed", "parentId": parent, "onclick": genericOnClick});
 
 
 // Create some radio items.
+/*
 function radioOnClick(info, tab) {
   console.log("radio item " + info.menuItemId +
               " was clicked (previous checked state was "  +
@@ -37,7 +37,7 @@ var radio1 = chrome.contextMenus.create({"title": "Radio 1", "type": "radio",
 var radio2 = chrome.contextMenus.create({"title": "Radio 2", "type": "radio",
                                          "onclick":radioOnClick});
 console.log("radio1:" + radio1 + " radio2:" + radio2);
-
+*/
 
 // Create some checkbox items.
 function checkboxOnClick(info, tab) {
@@ -47,12 +47,16 @@ function checkboxOnClick(info, tab) {
               "(previous state was " + info.wasChecked + ")");
 
 }
+var parentFeatures = chrome.contextMenus.create({"title": "Features"});
 var checkbox1 = chrome.contextMenus.create(
-  {"title": "Checkbox1", "type": "checkbox", "onclick":checkboxOnClick});
+  {"title": "Select to listen", "parentId": parentFeatures, "type": "checkbox", "onclick":checkboxOnClick});
 var checkbox2 = chrome.contextMenus.create(
-  {"title": "Checkbox2", "type": "checkbox", "onclick":checkboxOnClick});
-console.log("checkbox1:" + checkbox1 + " checkbox2:" + checkbox2);
+  {"title": "Show statistics", "parentId": parentFeatures, "type": "checkbox", "onclick":checkboxOnClick});
+  var checkbox3 = chrome.contextMenus.create(
+    {"title": "Download recent mp3", "parentId": parentFeatures, "type": "checkbox", "onclick":checkboxOnClick});
 
+var UninstallF = "Uninstall WebRICE";
+var UninstallF = chrome.contextMenus.create({"title": UninstallF, "onclick": genericOnClick});
 
 // Intentionally create an invalid item, to show off error checking in the
 // create callback.
