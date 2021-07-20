@@ -1,7 +1,7 @@
 # menu-labelled-open
 
 ## What it does
-
+Safa: this extension add a menu to the right click menu on Chrome 
 This extension adds a menu item that's shown when the context menu is shown over a link. When the item is clicked, it just opens the link in the current tab.
 
 The extension also listens for the `onShown` event: when this event is fired, the extension gets the hostname for the link and displays it in the menu item's title, so the user knows the hostname for the link they are thinking of clicking.

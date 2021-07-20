@@ -1,0 +1,29 @@
+{
+
+  "manifest_version": 2,
+  "name": "WebRICE",
+  "description": "Adds a context menu item that labels links",
+  "version": "0.6",
+
+  "icons": {
+    "16": "icons/arrow-right.svg",
+    "32": "icons/arrow-right.svg",
+    "48": "icons/arrow-right.svg"
+  },
+
+  "background": {
+    "scripts": ["background.js"]
+
+  },
+
+  "permissions": [
+    "contextMenus"
+  ],
+  "page_action": {
+      "browser_style": true,
+      "default_icon": "icons/WebRICE_logo.png",
+      "default_popup": "popup/choose_news_type.html",
+      "show_matches": ["https://*.mbl.is/*"]
+    }
+
+}

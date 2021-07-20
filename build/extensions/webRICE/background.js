@@ -1,8 +1,19 @@
 
+//section for menu
 function genericOnClick(info, tab) {
   console.log("item " + info.menuItemId + " was clicked");
   console.log("info: " + JSON.stringify(info));
   console.log("tab: " + JSON.stringify(tab));
+  //switch case
+  switch (chrome.contextMenus) {
+    case RightF:
+    chrome.tabs.executeScript({
+      code: 'document.body.style.backgroundColor="red"'
+    });
+      break;
+    default:
+
+  }
 }
 
 // Show WebRICE panel to the right .
@@ -24,20 +35,6 @@ var child2 = chrome.contextMenus.create(
   var child3 = chrome.contextMenus.create(
     {"title": "Change speed", "parentId": parent, "onclick": genericOnClick});
 
-
-// Create some radio items.
-/*
-function radioOnClick(info, tab) {
-  console.log("radio item " + info.menuItemId +
-              " was clicked (previous checked state was "  +
-              info.wasChecked + ")");
-}
-var radio1 = chrome.contextMenus.create({"title": "Radio 1", "type": "radio",
-                                         "onclick":radioOnClick});
-var radio2 = chrome.contextMenus.create({"title": "Radio 2", "type": "radio",
-                                         "onclick":radioOnClick});
-console.log("radio1:" + radio1 + " radio2:" + radio2);
-*/
 
 // Create some checkbox items.
 function checkboxOnClick(info, tab) {
@@ -67,3 +64,5 @@ chrome.contextMenus.create({"title": "Oops", "parentId":999}, function() {
     console.log("Got expected error: " + chrome.extension.lastError.message);
   }
 });
+
+//section for panel
